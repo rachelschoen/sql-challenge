@@ -30,6 +30,16 @@ CREATE TABLE employees(
     FOREIGN KEY (emp_title_id) REFERENCES titles(title_id)
 );
 
+-- For easier data manipulation, I decided to alter the employees table columns
+-- with dates into a DATE type. This allows me to search for date years easier.
+
+ALTER TABLE employees
+ALTER COLUMN birth_date TYPE DATE using to_date(birth_date , 'MM/DD/YYYY');
+
+ALTER TABLE employees
+ALTER COLUMN hire_date TYPE DATE using to_date(hire_date , 'MM/DD/YYYY');
+
+
 -- The below three tables need to be created after the above three to prevent import errors,
 -- as the keys and references rely on the above tables.
 
