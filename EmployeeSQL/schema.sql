@@ -1,4 +1,4 @@
--- Drop statements if running code multiple times.
+-- Drop statements if running code multiple times. --
 
 DROP TABLE IF EXISTS salaries;
 DROP TABLE IF EXISTS dept_manager;
@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS titles;
 DROP TABLE IF EXISTS departments;
 
--- Creating tables for each CSV file: starting with departments, titles, and employees.
+-- Creating tables for each CSV file: starting with departments, titles, and employees. --
 
 CREATE TABLE departments(
     dept_no VARCHAR(4) PRIMARY KEY,
@@ -30,8 +30,8 @@ CREATE TABLE employees(
     FOREIGN KEY (emp_title_id) REFERENCES titles(title_id)
 );
 
--- For easier data manipulation, I decided to alter the employees table columns
--- with dates into a DATE type. This allows me to search for date years easier.
+-- For easier data manipulation, I decided to alter the employees table columns --
+-- with dates into a DATE type. This allows me to search for date years easier. --
 
 ALTER TABLE employees
 ALTER COLUMN birth_date TYPE DATE using to_date(birth_date , 'MM/DD/YYYY');
@@ -40,8 +40,8 @@ ALTER TABLE employees
 ALTER COLUMN hire_date TYPE DATE using to_date(hire_date , 'MM/DD/YYYY');
 
 
--- The below three tables need to be created after the above three to prevent import errors,
--- as the keys and references rely on the above tables.
+-- The below three tables need to be created after the above three to prevent import errors, --
+-- as the keys and references rely on the above tables. --
 
 CREATE TABLE dept_emp(
 	emp_no INT NOT NULL,
